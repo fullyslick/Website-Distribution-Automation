@@ -9,8 +9,11 @@ gulp.task('default', function(done) {
   // So watch for changes and the execute the gulp task
   gulp.watch('sass/**/*.scss', gulp.series('styles'));
 
-  // watch when image is added to the 'img' folder, to copy it to 'dist/img'
+  // Watch when image is added to the 'img' folder, to copy it to 'dist/img'
   gulp.watch('img', gulp.series('copy-images'));
+
+  // Watch when html is changed in root folder, copy it to 'dist' folder.
+  gulp.watch('./*.html', gulp.series('copy-html'));
 
   // Always include done as argument and at the end of task to run the gulp ASYNC
   done();
@@ -48,6 +51,20 @@ gulp.task('copy-images', function(done) {
 
     // and copy the file to 'dist/img'
     .pipe(gulp.dest('dist/img'))
+
+  // Always include done as argument and at the end of task to run the gulp ASYNC
+  done();
+});
+
+// Copy the all html files to 'dist' folder.
+// Above there is a watcher, so when any html is changed it will be automaticly copied to 'dist' folder.
+gulp.task('copy-html', function(done) {
+
+  // Access every html file in root folder
+  gulp.src('./*.html')
+
+    // and copy the file to 'dist'
+    .pipe(gulp.dest('dist'))
 
   // Always include done as argument and at the end of task to run the gulp ASYNC
   done();
