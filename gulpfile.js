@@ -7,7 +7,7 @@ var browserSync = require('browser-sync').create();
 
 // Run Static Server + watching scss/html files
 // When gulp serve is first called run -> 'styles', 'copy-html', 'copy-images'
-gulp.task('serve', ['styles', 'copy-html', 'copy-images'], function() {
+gulp.task('serve', ['styles', 'copy-images'], function() {
 
     browserSync.init({
         server: "./dist"
