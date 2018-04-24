@@ -9,6 +9,9 @@ gulp.task('default', function(done) {
   // So watch for changes and the execute the gulp task
   gulp.watch('sass/**/*.scss', gulp.series('styles'));
 
+  // watch when image is added to the 'img' folder, to copy it to 'dist/img'
+  gulp.watch('img', gulp.series('copy-images'));
+
   // Always include done as argument and at the end of task to run the gulp ASYNC
   done();
 });
@@ -34,6 +37,18 @@ gulp.task('styles', function(done) {
     .pipe(gulp.dest('dist/css'))
 
   console.log('Completed');
+  // Always include done as argument and at the end of task to run the gulp ASYNC
+  done();
+});
+
+// Copy every image added to 'img' folder, to 'dist/img'
+gulp.task('copy-images', function(done) {
+  // Access every file in 'img' folder
+  gulp.src('img/*')
+
+    // and copy the file to 'dist/img'
+    .pipe(gulp.dest('dist/img'))
+
   // Always include done as argument and at the end of task to run the gulp ASYNC
   done();
 });
