@@ -1,7 +1,8 @@
 var gulp = require('gulp');
-// What plugin to use in this case gulp-sassand gulp-autoprefixer
+// What plugin to use in this case gulp-sass, gulp-autoprefixer, gulp-concat
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
+const concat = require('gulp-concat');
 
 var browserSync = require('browser-sync').create();
 
@@ -71,6 +72,21 @@ gulp.task('copy-html', function(done) {
     .pipe(gulp.dest('dist'))
 
   // Always include done as argument and at the end of task to run the gulp ASYNC
+  done();
+});
+
+// This task combine all js files into one in the root directory
+gulp.task('concat-js-root', function(done){
+
+  // Access every folder and js file in js folder of root folder.
+  gulp.src('js/**/*.js')
+
+  // Combine all js files into one called 'all.js'
+  .pipe(concat('all.js'))
+
+  // and copy the file to 'dist'
+  .pipe(gulp.dest('dist/js'))
+
   done();
 });
 
