@@ -1,8 +1,11 @@
 var gulp = require('gulp');
-// What plugin to use in this case gulp-sass, gulp-autoprefixer, gulp-concat
+// What plugin to use in this case gulp-sass, gulp-autoprefixer, gulp-concat, gulp-uglify
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
+const pump = require('pump'); // uglify needs this to handle errors
+const uglify = require('gulp-uglify');
+
 
 var browserSync = require('browser-sync').create();
 
@@ -75,7 +78,7 @@ gulp.task('copy-html', function(done) {
   done();
 });
 
-// This task combine all js files into one in the root directory
+// This task combine all js files into one in the dist directory
 gulp.task('concat-js-root', function(done){
 
   // Access every folder and js file in js folder of root folder.
@@ -88,6 +91,27 @@ gulp.task('concat-js-root', function(done){
   .pipe(gulp.dest('dist/js'))
 
   done();
+});
+
+// This task combine all js files into one in the dist directory,
+// but it will also compress the outputted js file.
+gulp.task('concat-js-dist', function(cb){
+  // Now using pump because uglify will throw an error
+  pump([
+      // Access every folder and js file in js folder of root folder.
+      gulp.src('js/**/*.js'),
+
+      // Combine all js files into one called 'all.js'
+      concat('all.js'),
+
+      // Minify 'all.js'
+      uglify(),
+
+      // and copy the file to 'dist'
+      gulp.dest('dist/js')
+    ],
+    cb
+  );
 });
 
 // This task will reload any "*.html" file when changes happen.

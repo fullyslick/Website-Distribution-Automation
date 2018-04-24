@@ -1,3 +1,1 @@
-window.onload = function() {
-  alert("Barca Loaded!");
-}
+window.onload=function(){alert("Barca Loaded!")};
