@@ -3,20 +3,24 @@ var gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 
-// Run the tasks -> name of task as string, function to be executed, (done) as argument for async execution
-gulp.task('default', function(done) {
-  // Add the -> gulp.watch if you want to execute the task on file save or change
-  // So watch for changes and the execute the gulp task
-  gulp.watch('sass/**/*.scss', gulp.series('styles'));
+var browserSync = require('browser-sync').create();
 
-  // Watch when image is added to the 'img' folder, to copy it to 'dist/img'
-  gulp.watch('img', gulp.series('copy-images'));
+// Run Static Server + watching scss/html files
+// When gulp serve is first called run -> 'styles', 'copy-html', 'copy-images'
+gulp.task('serve', ['styles', 'copy-html', 'copy-images'], function() {
 
-  // Watch when html is changed in root folder, copy it to 'dist' folder.
-  gulp.watch('./*.html', gulp.series('copy-html'));
+    browserSync.init({
+        server: "./dist"
+    });
 
-  // Always include done as argument and at the end of task to run the gulp ASYNC
-  done();
+    // If scss file in root dir is changed, run 'styles' task and reload index.html in dist folder.
+    gulp.watch("sass/**/*.scss", ['styles', 'reloadMe']);
+
+     // Watch when image is added to the 'img' folder, to copy it to 'dist/img'
+    gulp.watch('img', ['copy-images']);
+
+    // Watch when html is changed in root folder, copy it to 'dist' folder, and reload index.html in dist folder.
+    gulp.watch("./*.html", ['copy-html','reloadMe']);
 });
 
 // The sequance of task that will be executed.
@@ -69,3 +73,13 @@ gulp.task('copy-html', function(done) {
   // Always include done as argument and at the end of task to run the gulp ASYNC
   done();
 });
+
+// This task will reload any "*.html" file when changes happen.
+// Specify here the file which you want to reload, when change of specified above file happens
+gulp.task('reloadMe', function(done) {
+  browserSync.reload("dist/*.html");
+  done();
+});
+
+// Use `gulp default` to run the watchers
+gulp.task('default', ['serve']);

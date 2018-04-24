@@ -5,5 +5,6 @@
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
+  border: solid 2px green;
   background: url(../img/barca.jpg) no-repeat;
-  background-size: 100%; }
+  background-size: 100% 100%; }
