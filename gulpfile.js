@@ -32,7 +32,7 @@ gulp.task('styles', function(done) {
   gulp.src('sass/**/*.scss')
 
     // Then Run 'sass' plugin, which converts scss to css.
-    .pipe(sass())
+    .pipe(sass({outputStyle: 'compressed'}))
 
     // After that Run autoprefixer, using the last 4 versions of all browsers, settings.
     .pipe(autoprefixer({
