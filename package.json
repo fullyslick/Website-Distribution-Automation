@@ -1,0 +1,15 @@
+{
+  "name": "website-distribution",
+  "version": "1.0.0",
+  "description": "This project contain automation packages for Node.js, that are used before a website is uploaded on a server. The files in `dist` folder of the project, are modified by the **Installed Tools**. These files represents the optimized website ready for upload to the server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1"
+  }
+}

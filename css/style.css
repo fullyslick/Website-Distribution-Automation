@@ -1,0 +1,8 @@
+.background {
+  width: 500px;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  background: url(../img/barca.jpg) no-repeat;
+  background-size: 100%;
+}
