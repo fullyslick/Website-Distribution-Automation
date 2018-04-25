@@ -1,1 +1,8 @@
-window.onload=function(){alert("Barca Loaded!")};var backdiv=document.querySelector(".background");backdiv.setAttribute("style","border: dashed 5px red");
+'use strict';
+
+window.onload = function () {
+  alert("Barca Loaded!");
+};
+
+var backDiv = document.querySelector('.background');
+backDiv.setAttribute('style', 'border: dashed 5px red');

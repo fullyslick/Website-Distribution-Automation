@@ -13,6 +13,7 @@ This project contain automation packages for Node.js, that are used before a web
 - **gulp-concat** - already installed in this project. For any project, navigate to project folder using the terminal and type `npm install gulp-concat` to install gulp package locally;
 - **pump** and **gulp-uglify** - already installed in this project. For any project, navigate to project folder using the terminal and type `npm install pump` & `npm install gulp-uglify` to install gulp package locally;
 - **linter** & **linter-eslint** plugins for **Atom** - and `npm install standard` to use it for linting in Atom. Restart **Atom**, to start linting.
+- **gulp-babel** - already installed in this project. For any project, navigate to project folder using the terminal and type `npm install --save-dev gulp-babel babel-core babel-preset-env` to install gulp package locally. More info on [Babel](https://www.npmjs.com/package/gulp-babel);
 
 ## How To Use The Tools
 To use the tools checkout the configuration of the `gulpfile.js`.

@@ -1,2 +1,2 @@
-var backdiv = document.querySelector('.background');
-backdiv.setAttribute('style', 'border: dashed 5px red');
+const backDiv = document.querySelector('.background');
+backDiv.setAttribute('style', 'border: dashed 5px red');

@@ -5,6 +5,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const concat = require('gulp-concat');
 const pump = require('pump'); // uglify needs this to handle errors
 const uglify = require('gulp-uglify');
+const babel = require('gulp-babel'); // converts ES6 code to ES5
+
 
 
 var browserSync = require('browser-sync').create();
@@ -87,6 +89,11 @@ gulp.task('concat-js-root', function(done){
   // Combine all js files into one called 'all.js'
   .pipe(concat('all.js'))
 
+  // Converts ES6 code to ES5
+  .pipe(babel({
+            presets: ['env']
+        }))
+
   // and copy the file to 'dist'
   .pipe(gulp.dest('dist/js'))
 
@@ -103,6 +110,11 @@ gulp.task('concat-js-dist', function(cb){
 
       // Combine all js files into one called 'all.js'
       concat('all.js'),
+
+      // Converts ES6 code to ES5
+      babel({
+            presets: ['env']
+        }),
 
       // Minify 'all.js'
       uglify(),
