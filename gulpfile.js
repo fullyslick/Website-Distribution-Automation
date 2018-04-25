@@ -6,6 +6,7 @@ const concat = require('gulp-concat');
 const pump = require('pump'); // uglify needs this to handle errors
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel'); // converts ES6 code to ES5
+sourcemaps = require('gulp-sourcemaps'); // Enables debugging in Browser from original files, not from processed in dist folder
 
 
 
@@ -37,6 +38,10 @@ gulp.task('styles', function(done) {
   // In this case look for all folders and subfolders of 'sass', and look for files with extension 'scss'.
   gulp.src('sass/**/*.scss')
 
+    // Takes the file and process it to use sourcemaps.
+    // Always place after "gulp.src"
+    .pipe(sourcemaps.init())
+
     // Then Run 'sass' plugin, which converts scss to css.
     .pipe(sass({outputStyle: 'compressed'}))
 
@@ -45,6 +50,10 @@ gulp.task('styles', function(done) {
       browsers: ['last 4 versions'],
       cascade: false
     }))
+
+    // Create a map file in the same directory  to enable debugging from original.
+    // Always place before "gulp.dest"
+    .pipe(sourcemaps.write('.'))
 
     // Save the converted files in 'dist/css' folder
     .pipe(gulp.dest('dist/css'))
@@ -108,6 +117,10 @@ gulp.task('concat-js-dist', function(cb){
       // Access every folder and js file in js folder of root folder.
       gulp.src('js/**/*.js'),
 
+      // Takes the file and process it to use sourcemaps.
+      // Always place after "gulp.src"
+      sourcemaps.init(),
+
       // Combine all js files into one called 'all.js'
       concat('all.js'),
 
@@ -118,6 +131,10 @@ gulp.task('concat-js-dist', function(cb){
 
       // Minify 'all.js'
       uglify(),
+
+      // Create a map file in the same directory  to enable debugging from original.
+      // Always place before "gulp.dest"
+      sourcemaps.write('.'),
 
       // and copy the file to 'dist'
       gulp.dest('dist/js')

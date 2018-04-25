@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,YACE,YACA,aACA,oBAAA,AACA,oBADA,AACA,aAAA,cACA,uBACA,2CACA,yBAA0B,CAC3B","file":"style.css","sourcesContent":[".background {\n  width: 500px;\n  height: 400px;\n  display: flex;\n  margin: 0 auto;\n  border: solid 2px green;\n  background: url(../img/barca.jpg) no-repeat;\n  background-size: 100% 100%;\n}\n"]}
