@@ -121,5 +121,12 @@ gulp.task('reloadMe', function(done) {
   done();
 });
 
+// Task that produces production ready version of the site
+gulp.task('dist', [
+  'copy-html',
+  'copy-images',
+  'styles',
+  'concat-js-dist']);
+
 // Use `gulp default` to run the watchers
 gulp.task('default', ['serve']);
