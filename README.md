@@ -12,6 +12,7 @@ This project contain automation packages for Node.js, that are used before a web
 - **browser-sync** - already installed in this project. For any project, navigate to project folder using the terminal and type `npm install browser-sync gulp --save-dev` to install gulp package locally;
 - **gulp-concat** - already installed in this project. For any project, navigate to project folder using the terminal and type `npm install gulp-concat` to install gulp package locally;
 - **pump** and **gulp-uglify** - already installed in this project. For any project, navigate to project folder using the terminal and type `npm install pump` & `npm install gulp-uglify` to install gulp package locally;
+- **npm install standard** - to use it for linting in Atom.
 
 ## How To Use The Tools
 To use the tools checkout the configuration of the `gulpfile.js`.
