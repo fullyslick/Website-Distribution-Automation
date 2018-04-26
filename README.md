@@ -18,3 +18,6 @@ This project contain automation packages for Node.js, that are used before a web
 
 ## How To Use The Tools
 To use the tools checkout the configuration of the `gulpfile.js`.
+
+### Important Note
+You can achieve the same by using [Yoeman](http://yeoman.io) and [generator-default-gulp](https://github.com/kanlidy/generator-default-gulp) generator for Yoeman.

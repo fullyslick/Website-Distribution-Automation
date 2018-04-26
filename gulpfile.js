@@ -6,7 +6,7 @@ const concat = require('gulp-concat');
 const pump = require('pump'); // uglify needs this to handle errors
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel'); // converts ES6 code to ES5
-sourcemaps = require('gulp-sourcemaps'); // Enables debugging in Browser from original files, not from processed in dist folder
+const sourcemaps = require('gulp-sourcemaps'); // Enables debugging in Browser from original files, not from processed in dist folder
 
 
 
